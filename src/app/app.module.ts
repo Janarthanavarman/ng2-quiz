@@ -11,6 +11,7 @@ import { UploadComponent } from './upload/upload.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { AuthGuard } from './auth.guard';
 import { RegisterComponent } from './register/register.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -21,7 +22,8 @@ import { RegisterComponent } from './register/register.component';
     HighlightDirective,
     LoginComponent,
     UploadComponent,
-    RegisterComponent
+    RegisterComponent,
+    RxjsComponent
     ],
   imports: [
     BrowserModule,

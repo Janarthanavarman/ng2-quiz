@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../services/quiz.service';
 import { HelperService } from '../services/helper.service';
 import { Option, Question, Quiz, QuizConfig } from '../models/index';
+import * as jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-quiz',
@@ -118,5 +120,30 @@ export class QuizComponent implements OnInit {
     // Post your data to the server here. answers contains the questionId and the users' answer.
     //console.log(this.quiz.questions);
     this.mode = 'result';
+  }
+
+  PDF(){
+    html2canvas(document.querySelector(".result")).then(canvas => {
+
+      
+    //   new JsPDF(  
+    //     Orientation, // Landscape or Portrait  
+      
+    //     unit, // mm, cm, in  ,pt
+      
+    //     format // A2, A4 etc  
+    // );  
+
+      var imgData  = canvas.toDataURL("image/PNG", 1.0);
+      
+      // var pdf = new jsPDF('p', 'mm',"A4");
+      // pdf.addImage(imgData,0,0,210, 297);
+      // pdf.save('converteddoc.pdf');
+
+      var pdfImage = new jsPDF('p', 'pt',[canvas.width, canvas.height]);
+      pdfImage.addImage(imgData,0,0,canvas.width, canvas.height);
+      pdfImage.save('converteddocimage.pdf');
+
+  });
   }
 }
