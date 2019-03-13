@@ -10,18 +10,26 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   constructor(private service:GuardService,private router:Router) { }
-
+  msg : string ;
   ngOnInit() {
   }
 
   
   Register(uname: string, p : string)
   {
-    var output = this.service.Register(uname, p);
-    //if(output == true)
-    {
-      this.router.navigate(['/login']);
+
+
+    if(uname && p){
+      this.msg="";
+      this.msg = this.service.Register(uname, p);
+      if(this.msg.endsWith("success"))
+      {
+        this.router.navigate(['/login']);
+      }
+
     }
+    else
+      this.msg ="Incorrect";
   }
 
 
