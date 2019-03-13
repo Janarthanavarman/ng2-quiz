@@ -36,20 +36,20 @@ export class QuizService {
   getCategory(): Observable<any[]> {    
     console.log(QuizService.header);
 
-    return this.http.get(`${QuizHost}get`,
-    {
-      headers:QuizService.header
-    }
-    ).pipe(
-      tap( _=> { console.log("getCategory success")}),      
-      catchError(this.handleError<any>(`getCategory`))
-     );
+    // return this.http.get(`${QuizHost}get`,
+    // {
+    //   headers:QuizService.header
+    // }
+    // ).pipe(
+    //   tap( _=> { console.log("getCategory success")}),      
+    //   catchError(this.handleError<any>(`getCategory`))
+    //  );
     
-    // return of([
-    //   { id: 'data/aspnet.json', name: 'Asp.Net' },
-    //   { id: 'data/csharp.json', name: 'C Sharp' },
-    //   { id: 'data/designPatterns.json', name: 'Design Patterns' }
-    // ]);
+    return of([
+      { id: 'data/aspnet.json', name: 'Asp.Net' },
+      { id: 'data/csharp.json', name: 'C Sharp' },
+      { id: 'data/designPatterns.json', name: 'Design Patterns' }
+    ]);
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
